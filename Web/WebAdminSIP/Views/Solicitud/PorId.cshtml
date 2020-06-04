@@ -1,0 +1,62 @@
+﻿@*@using WebAdminSIP.Models.DTO*@
+@model List<WebAdminSIP.Models.DTO.ViewModel.SolicitudViewModel>
+
+
+
+<br />
+<center><h1>Listado de Solicitudes</h1></center>
+<br />
+
+
+@{ if (Model.Count() > 0)
+
+    {
+        <table id="TblSolicitudes" class="table display nowrap">
+            <thead>
+                <tr>
+                    <th scope="col">ID Solicitud</th>
+                    <th scope="col">Prestación</th>
+                    <th scope="col">Prestador</th>
+                    <th scope="col">Isapre</th>
+                    <th scope="col">Afiliado</th>
+                    <th scope="col">Estado</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var solicitud in Model)
+                {
+                    <tr>
+                        <td>@solicitud.id</td>
+                        <td>@solicitud.prestacion</td>
+                        <td>@solicitud.prestador</td>
+
+                        @if (@solicitud.isapre == "B")
+                        {
+                            <td>Banmédica</td>
+                        }
+                        else
+                        {
+                            <td>Vida Tres</td>
+                        }
+                        <td>@solicitud.afiliado</td>
+
+                        @if (@solicitud.estado == "V")
+                        {
+                            <td>Vigente</td>
+                        }
+                        else
+                        {
+                            <td>No Vigente</td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No se han encontrado solicitudes.</p>
+    }
+
+}

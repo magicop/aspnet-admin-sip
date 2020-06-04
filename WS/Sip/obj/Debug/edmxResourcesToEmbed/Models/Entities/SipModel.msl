@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SipModelStoreContainer" CdmEntityContainer="SipEntities">
+    <FunctionImportMapping FunctionImportName="PKG_SIPNET_OBTENER_PRESTACIONES" FunctionName="SipModel.Store.PKG_SIPNET_OBTENER_PRESTACIONES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SipModel.Prestacion">
+          <ScalarProperty Name="PRESSIP_ID" ColumnName="PRESSIP_ID" />
+          <ScalarProperty Name="PRES_CCOD_PAQUETE" ColumnName="PRES_CCOD_PAQUETE" />
+          <ScalarProperty Name="PAQU_DESCRIPCION" ColumnName="PAQU_DESCRIPCION" />
+          <ScalarProperty Name="PRESSIP_XESTADO" ColumnName="PRESSIP_XESTADO" />
+          <ScalarProperty Name="PRESSIP_FINICIO_VIGENCIA" ColumnName="PRESSIP_FINICIO_VIGENCIA" />
+          <ScalarProperty Name="PRESSIP_FTERMINO_VIGENCIA" ColumnName="PRESSIP_FTERMINO_VIGENCIA" />
+          <ScalarProperty Name="ISAP_CEMPRESA" ColumnName="ISAP_CEMPRESA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PKG_SIPNET_OBTENER_PRESTADORES" FunctionName="SipModel.Store.PKG_SIPNET_OBTENER_PRESTADORES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SipModel.Prestador">
+          <ScalarProperty Name="PRESTSIP_ID" ColumnName="PRESTSIP_ID" />
+          <ScalarProperty Name="PRTA_NRUT" ColumnName="PRTA_NRUT" />
+          <ScalarProperty Name="PRTA_NOMBRE" ColumnName="PRTA_NOMBRE" />
+          <ScalarProperty Name="PRTA_NRUT_INSTITUCION" ColumnName="PRTA_NRUT_INSTITUCION" />
+          <ScalarProperty Name="PRTA_NSECUEN_INSTITUCION" ColumnName="PRTA_NSECUEN_INSTITUCION" />
+          <ScalarProperty Name="ISAP_CEMPRESA" ColumnName="ISAP_CEMPRESA" />
+          <ScalarProperty Name="PRESTSIP_XESTADO" ColumnName="PRESTSIP_XESTADO" />
+          <ScalarProperty Name="PRESTSIP_FINICIO_VIGENCIA" ColumnName="PRESTSIP_FINICIO_VIGENCIA" />
+          <ScalarProperty Name="PRESTSIP_FTERMINO_VIGENCIA" ColumnName="PRESTSIP_FTERMINO_VIGENCIA" />
+          <ScalarProperty Name="PRESTSIP_OBSERVACION" ColumnName="PRESTSIP_OBSERVACION" />
+          <ScalarProperty Name="TRAMO" ColumnName="TRAMO" />
+          <ScalarProperty Name="COPAGO" ColumnName="COPAGO" />
+          <ScalarProperty Name="PRESTSIP_DIRECCION" ColumnName="PRESTSIP_DIRECCION" />
+          <ScalarProperty Name="PRESTSIP_TELEFONO" ColumnName="PRESTSIP_TELEFONO" />
+          <ScalarProperty Name="PRESTSIP_DIRWEB" ColumnName="PRESTSIP_DIRWEB" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="V_AFILIADOSIP">
+      <EntityTypeMapping TypeName="SipModel.V_AFILIADOSIP">
+        <MappingFragment StoreEntitySet="V_AFILIADOSIP">
+          <ScalarProperty Name="TIENERESTRICCIONES" ColumnName="TIENERESTRICCIONES" />
+          <ScalarProperty Name="TIENECOBERTURASIP" ColumnName="TIENECOBERTURASIP" />
+          <ScalarProperty Name="TRAMO" ColumnName="TRAMO" />
+          <ScalarProperty Name="PLSA_CCOD" ColumnName="PLSA_CCOD" />
+          <ScalarProperty Name="ISAP_CEMPRESA" ColumnName="ISAP_CEMPRESA" />
+          <ScalarProperty Name="AFIL_TAPELLIDO_MATERNO" ColumnName="AFIL_TAPELLIDO_MATERNO" />
+          <ScalarProperty Name="AFIL_TAPELLIDO_PATERNO" ColumnName="AFIL_TAPELLIDO_PATERNO" />
+          <ScalarProperty Name="AFIL_TNOMBRES" ColumnName="AFIL_TNOMBRES" />
+          <ScalarProperty Name="AFIL_XDV" ColumnName="AFIL_XDV" />
+          <ScalarProperty Name="AFIL_NRUT" ColumnName="AFIL_NRUT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="PKG_SIPNET_OBTENER_CONDICIONES" FunctionName="SipModel.Store.PKG_SIPNET_OBTENER_CONDICIONES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SipModel.Condicion">
+          <ScalarProperty Name="PRESCOND_TCONCIDICION" ColumnName="PRESCOND_TCONCIDICION" />
+          <ScalarProperty Name="PRESCOND_XTIPO" ColumnName="PRESCOND_XTIPO" />
+          <ScalarProperty Name="PRESCOND_XESTADO" ColumnName="PRESCOND_XESTADO" />
+          <ScalarProperty Name="PRESCOND_FINICIO_VIGENCIA" ColumnName="PRESCOND_FINICIO_VIGENCIA" />
+          <ScalarProperty Name="PRESCOND_FTERMINO_VIGENCIA" ColumnName="PRESCOND_FTERMINO_VIGENCIA" />
+          <ScalarProperty Name="ISAP_CEMPRESA" ColumnName="ISAP_CEMPRESA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PKG_SIPNET_SP_GRABA_PREVIEW" FunctionName="SipModel.Store.PKG_SIPNET_SP_GRABA_PREVIEW" />
+    <FunctionImportMapping FunctionImportName="PKG_SIPNET_SP_GRABA_SOLICITUD" FunctionName="SipModel.Store.PKG_SIPNET_SP_GRABA_SOLICITUD" />
+    <FunctionImportMapping FunctionImportName="PKG_SIPNET_SP_OBTENER_SIP" FunctionName="SipModel.Store.PKG_SIPNET_SP_OBTENER_SIP">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SipModel.Sip">
+          <ScalarProperty Name="SOLSIP_ID" ColumnName="SOLSIP_ID" />
+          <ScalarProperty Name="AFIL_NRUT" ColumnName="AFIL_NRUT" />
+          <ScalarProperty Name="AFIL_TNOMBRES" ColumnName="AFIL_TNOMBRES" />
+          <ScalarProperty Name="AFIL_TAPELLIDO_PATERNO" ColumnName="AFIL_TAPELLIDO_PATERNO" />
+          <ScalarProperty Name="AFIL_TAPELLIDO_MATERNO" ColumnName="AFIL_TAPELLIDO_MATERNO" />
+          <ScalarProperty Name="INICIOVIGENCIA" ColumnName="INICIOVIGENCIA" />
+          <ScalarProperty Name="ISAP_CEMPRESA" ColumnName="ISAP_CEMPRESA" />
+          <ScalarProperty Name="CARG_NRUT" ColumnName="CARG_NRUT" />
+          <ScalarProperty Name="SOLISIP_FSOLICITUD" ColumnName="SOLISIP_FSOLICITUD" />
+          <ScalarProperty Name="PRESSIP_ID" ColumnName="PRESSIP_ID" />
+          <ScalarProperty Name="PAQU_DESCRIPCION" ColumnName="PAQU_DESCRIPCION" />
+          <ScalarProperty Name="PRES_CCOD_PAQUETE" ColumnName="PRES_CCOD_PAQUETE" />
+          <ScalarProperty Name="PRESTSIP_ID" ColumnName="PRESTSIP_ID" />
+          <ScalarProperty Name="PRESTSIP_NOMBRE_PREST" ColumnName="PRESTSIP_NOMBRE_PREST" />
+          <ScalarProperty Name="PRTA_NRUT" ColumnName="PRTA_NRUT" />
+          <ScalarProperty Name="PRESTSIP_DIRECCION" ColumnName="PRESTSIP_DIRECCION" />
+          <ScalarProperty Name="PRESTSIP_TELEFONO" ColumnName="PRESTSIP_TELEFONO" />
+          <ScalarProperty Name="PRESTSIP_DIRWEB" ColumnName="PRESTSIP_DIRWEB" />
+          <ScalarProperty Name="TRAMO" ColumnName="TRAMO" />
+          <ScalarProperty Name="CATSIP_NCATEGORIA" ColumnName="CATSIP_NCATEGORIA" />
+          <ScalarProperty Name="CANAL" ColumnName="CANAL" />
+          <ScalarProperty Name="SOLISIP_EJEC_NRUT" ColumnName="SOLISIP_EJEC_NRUT" />
+          <ScalarProperty Name="SOLISIP_AGENCIA" ColumnName="SOLISIP_AGENCIA" />
+          <ScalarProperty Name="SOLISIP_XESTADO" ColumnName="SOLISIP_XESTADO" />
+          <ScalarProperty Name="SOLISIP_FESTADO" ColumnName="SOLISIP_FESTADO" />
+          <ScalarProperty Name="PLSA_CCOD" ColumnName="PLSA_CCOD" />
+          <ScalarProperty Name="COPAGO" ColumnName="COPAGO" />
+          <ScalarProperty Name="NOMBRE_EJECUTIVO" ColumnName="NOMBRE_EJECUTIVO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PKG_SIPNET_SP_OBTENER_PREVIEW" FunctionName="SipModel.Store.PKG_SIPNET_SP_OBTENER_PREVIEW">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SipModel.PresupuestoSip">
+          <ScalarProperty Name="SOLSIP_ID" ColumnName="SOLSIP_ID" />
+          <ScalarProperty Name="AFIL_NRUT" ColumnName="AFIL_NRUT" />
+          <ScalarProperty Name="AFIL_TNOMBRES" ColumnName="AFIL_TNOMBRES" />
+          <ScalarProperty Name="AFIL_TAPELLIDO_PATERNO" ColumnName="AFIL_TAPELLIDO_PATERNO" />
+          <ScalarProperty Name="AFIL_TAPELLIDO_MATERNO" ColumnName="AFIL_TAPELLIDO_MATERNO" />
+          <ScalarProperty Name="INICIOVIGENCIA" ColumnName="INICIOVIGENCIA" />
+          <ScalarProperty Name="ISAP_CEMPRESA" ColumnName="ISAP_CEMPRESA" />
+          <ScalarProperty Name="CARG_NRUT" ColumnName="CARG_NRUT" />
+          <ScalarProperty Name="SOLISIP_FSOLICITUD" ColumnName="SOLISIP_FSOLICITUD" />
+          <ScalarProperty Name="PRESSIP_ID" ColumnName="PRESSIP_ID" />
+          <ScalarProperty Name="PAQU_DESCRIPCION" ColumnName="PAQU_DESCRIPCION" />
+          <ScalarProperty Name="PRES_CCOD_PAQUETE" ColumnName="PRES_CCOD_PAQUETE" />
+          <ScalarProperty Name="PRESTSIP_ID" ColumnName="PRESTSIP_ID" />
+          <ScalarProperty Name="TRAMO" ColumnName="TRAMO" />
+          <ScalarProperty Name="CATSIP_NCATEGORIA" ColumnName="CATSIP_NCATEGORIA" />
+          <ScalarProperty Name="CANAL" ColumnName="CANAL" />
+          <ScalarProperty Name="SOLISIP_EJEC_NRUT" ColumnName="SOLISIP_EJEC_NRUT" />
+          <ScalarProperty Name="SOLISIP_AGENCIA" ColumnName="SOLISIP_AGENCIA" />
+          <ScalarProperty Name="SOLISIP_XESTADO" ColumnName="SOLISIP_XESTADO" />
+          <ScalarProperty Name="SOLISIP_FESTADO" ColumnName="SOLISIP_FESTADO" />
+          <ScalarProperty Name="PLSA_CCOD" ColumnName="PLSA_CCOD" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PKG_SIPNET_OBTENER_BENEFICIARIOS" FunctionName="SipModel.Store.PKG_SIPNET_OBTENER_BENEFICIARIOS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SipModel.Beneficiario">
+          <ScalarProperty Name="RUT" ColumnName="RUT" />
+          <ScalarProperty Name="SECUENCIA" ColumnName="SECUENCIA" />
+          <ScalarProperty Name="APEPAT" ColumnName="APEPAT" />
+          <ScalarProperty Name="APEMAT" ColumnName="APEMAT" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="DV" ColumnName="DV" />
+          <ScalarProperty Name="INICIOVIGENCIA" ColumnName="INICIOVIGENCIA" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="FONO1" ColumnName="FONO1" />
+          <ScalarProperty Name="CELULAR" ColumnName="CELULAR" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PKG_SIPNET_OBTENER_STAFF" FunctionName="SipModel.Store.PKG_SIPNET_OBTENER_STAFF">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SipModel.Staff">
+          <ScalarProperty Name="PRTA_NRUT" ColumnName="PRTA_NRUT" />
+          <ScalarProperty Name="STPREST_NOMBRE_PRES" ColumnName="STPREST_NOMBRE_PRES" />
+          <ScalarProperty Name="STPREST_XESTADO" ColumnName="STPREST_XESTADO" />
+          <ScalarProperty Name="STPREST_FINICIO_VIGENCIA" ColumnName="STPREST_FINICIO_VIGENCIA" />
+          <ScalarProperty Name="STPREST_FTERMINO_VIGENCIA" ColumnName="STPREST_FTERMINO_VIGENCIA" />
+          <ScalarProperty Name="ISAP_CEMPRESA" ColumnName="ISAP_CEMPRESA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="MAIL_PRESTADOR_SIP">
+      <EntityTypeMapping TypeName="SipModel.MAIL_PRESTADOR_SIP">
+        <MappingFragment StoreEntitySet="MAIL_PRESTADOR_SIP">
+          <ScalarProperty Name="MAPRES_FTERMINO_VIGENCIA" ColumnName="MAPRES_FTERMINO_VIGENCIA" />
+          <ScalarProperty Name="MAPRES_FINICIO_VIGENCIA" ColumnName="MAPRES_FINICIO_VIGENCIA" />
+          <ScalarProperty Name="MAPRES_XESTADO" ColumnName="MAPRES_XESTADO" />
+          <ScalarProperty Name="ISAP_CEMPRESA" ColumnName="ISAP_CEMPRESA" />
+          <ScalarProperty Name="MAPRES_TCORREO" ColumnName="MAPRES_TCORREO" />
+          <ScalarProperty Name="PRESTSIP_ID" ColumnName="PRESTSIP_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

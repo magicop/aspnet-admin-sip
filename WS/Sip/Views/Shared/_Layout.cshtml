@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Beneficio Cuenta Segura</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body data-ng-app="angularSip" data-ng-controller="sipController">
+
+    <section id="container" class="">
+        <header class="header dark-bg">
+            <div class="toggle-nav">
+                <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"></div>
+            </div>
+            <!--logo start-->
+            <a href="#" class="logo">CUENTA <span class="logo">CONOCIDA</span></a>
+            <!--logo end-->
+            <div class="top-nav notification-row">
+                <!-- notificatoin dropdown start-->
+                <ul class="nav pull-right top-menu">
+                    <!-- user login dropdown start-->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="profile-ava">
+                                <img alt="" src="/Content/images/avatar_small.png">
+                            </span>
+                            <span class="username">@ViewBag.UserName</span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu extended logout">
+                            <div class="log-arrow-up"></div>
+                            <li class="eborder-top">
+                                <a href="#"><i class="icon_profile"></i> Mi Perfil</a>
+                            </li>
+                            <li>
+                                <a href="/resources/tutorial.pdf" target="_blank"><i class="icon_document"></i> Documentation</a>
+                            </li>
+                            <li>
+                                <a href="#" ng-click="ReimprimirSolicitud()"><i class="icon_archive"></i> Reimpresi&oacute;n</a>
+                            </li>
+
+                            <li>
+
+                                <a href="/Home/Index?id=@ViewBag.Id"><i class="icon_key_alt"></i> Nuevo Caso</a>
+                            </li>
+
+
+                        </ul>
+                    </li>
+                    <!-- user login dropdown end -->
+                </ul>
+                <!-- notificatoin dropdown end-->
+            </div>
+        </header>
+
+
+
+        <section id="main-content">
+            <section class="wrapper">
+                <!--overview start-->
+                @RenderBody()
+            </section>
+        </section>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            @*<p class="text-muted">
+                    <span>
+                        <img src="/Content/Images/banmedica.png" />
+                    </span>&nbsp;&nbsp;&nbsp;
+                    <span>
+                        <img src="/Content/images/vidatres.png" />
+                    </span>
+                </p>*@
+            <p class="text-muted pull-left">© 2015 Isapre Banm&eacute;dica</p>
+            <p class="text-muted pull-right">
+                <span>
+                    <img src="/Content/Images/banmedica.png" />
+                </span>&nbsp;&nbsp;&nbsp;
+                <span>
+                    <img src="/Content/images/vidatres.png" />
+                </span>
+            </p>
+            @*<p class="text-muted pull-right">Desarrollado por <img src="/Content/images/vextus it.png" width="120px" height="36px" /> </p>*@
+        </div>
+    </footer>
+    <input type="hidden" ng-model="runejecutivo" ng-init="runejecutivo='@ViewBag.RunEjecutivo'" />
+
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/controllers")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

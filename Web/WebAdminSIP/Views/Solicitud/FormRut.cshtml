@@ -1,0 +1,32 @@
+﻿@model WebAdminSIP.Models.DTO.ViewModel.SolicitudViewModel
+
+
+<div class="container">
+
+    <center><h1>Buscar Solicitud por Rut</h1></center>
+    <br>
+
+    @using (Html.BeginForm("PorRut", "Solicitud", FormMethod.Post, new { id = "FormSolicitudRut", accion = "rut" }))
+    {
+        <div class="form-row">
+
+            <div class="form-group col-md-6">
+                <label>Rut</label>
+                @Html.TextBoxFor(model => model.rut,  new { @class = "form-control", placeholder = "Ingrese el rut del afiliado", @type = "number" })  
+            </div>
+
+            <div class="form-group col-md-6">
+                <center>
+                    <br>
+
+                    <button type="submit" class="btn btn-outline-danger btn-lg" id="btnBuscarRut" name="btnBuscarRut">Buscar</button>                    
+                                        
+                    <button type="reset" class="btn btn-outline-danger btn-lg" onclick="limpiarFormulario()" value="Limpiar">Limpiar</button>
+
+                </center>
+            </div>
+        </div>
+    }
+
+
+</div>

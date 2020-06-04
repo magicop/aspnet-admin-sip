@@ -1,0 +1,62 @@
+﻿@using WebAdminSIP.Models.DTO
+@model List<WebAdminSIP.Models.DTO.Prestador>
+
+
+<br />
+<center>
+    <h1>Listado de Prestadores</h1>
+    <br />
+    @*<a href="@Url.Action("FormAgregar", "Prestador")">
+        <div class="btn btn-outline-danger">Agregar Prestador</div>
+    </a>*@  
+</center>
+
+@{ if (Model.Count() > 0)
+
+    {
+        <table id="TblPrestadores" class="table display nowrap">
+            <thead>
+                <tr>
+                    <th scope="col">Rut</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Isapre</th>
+                    <th scope="col">Institución</th>
+                    <th scope="col">Secuencia</th>
+                    <th scope="col">*</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var prestador in Model)
+                {
+                    <tr>
+                        <td>@prestador.rut</td>
+                        <td>@prestador.nombre</td>
+
+                        @if (@prestador.isapre == "B")
+                        {
+                            <td>Banmédica</td>
+                        }
+                        else
+                        {
+                            <td>Vida Tres</td>
+                        }
+
+                        <td>@prestador.institucion</td>
+                        <td>@prestador.secuencia</td>
+                        <td>
+                            <a href="@Url.Action("Eliminar", "Prestador", new { rut = @prestador.rut, isapre = "banmedica" })">
+                                <i class="far fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Eliminar Prestador"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No se han encontrado prestadores.</p>
+    }
+
+}

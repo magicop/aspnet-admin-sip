@@ -1,0 +1,32 @@
+﻿@model WebAdminSIP.Models.DTO.ViewModel.SolicitudViewModel
+
+
+<div class="container">
+
+    <center><h1>Buscar Solicitud por ID</h1></center>
+    <br>
+
+    @using (Html.BeginForm("PorId", "Solicitud", FormMethod.Post, new { id = "FormSolicitudId", name = "FormSolicitudId", accion = "rut" }))
+    {
+        <div class="form-row">
+
+            <div class="form-group col-md-6">
+                <label>ID</label>
+                @Html.TextBoxFor(model => model.id, new { @class = "form-control", placeholder = "Ingrese la ID de la solicitud", @type = "number" })
+            </div>
+
+            <div class="form-group col-md-6">
+                <center>
+                    <br>
+
+                    <button type="submit" class="btn btn-outline-danger btn-lg" name="btnBuscarId" id="btnBuscarId">Buscar</button>
+
+                    <button type="reset" class="btn btn-outline-danger btn-lg" onclick="limpiarFormulario()" value="Limpiar">Limpiar</button>
+
+                </center>
+            </div>
+        </div>
+    }
+
+
+</div>

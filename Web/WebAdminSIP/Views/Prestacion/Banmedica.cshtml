@@ -1,0 +1,99 @@
+﻿@using WebAdminSIP.Models.DTO
+@model List<WebAdminSIP.Models.DTO.Prestacion>
+
+
+<br />
+<center>
+    <h1>Listado de Prestaciones</h1>
+    <br />
+
+    <a href="@Url.Action("FormAgregar", "Prestacion")">
+        <div class="btn btn-outline-danger">Agregar Prestación</div>
+    </a>  
+    @*<button type="submit" class="btn btn-outline-danger" href="@Url.Action("FormB", "Prestacion")" value="Agregar">Agregar Prestación</button>
+    <br />*@
+
+</center>
+
+@{ if (Model.Count() > 0)
+
+    {
+        <table id="TblPrestacion" class="table display nowrap">
+            <thead>
+                <tr>
+                    <th scope="col">Código Paquete</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Isapre</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Inicio Vigencia</th>
+                    <th scope="col">Término Vigencia</th>
+                    <th scope="col">*</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var prestacion in Model)
+                {
+                    <tr>
+                        <td>@prestacion.codPaquete</td>
+                        <td>@prestacion.descripcion</td>
+
+                        @if (@prestacion.isapre == "B")
+                        {
+                            <td>Banmédica</td>
+                        }
+                        else
+                        {
+                            <td>Vida Tres</td>
+                        }
+
+                        @if (@prestacion.estado == "V")
+                        {
+                            <td>Vigente</td>
+                        }
+                        else
+                        {
+                            <td>No Vigente</td>
+                        }
+
+                        <td>@prestacion.inicioVigencia</td>
+                        
+                        @if (@prestacion.terminoVigencia == Convert.ToDateTime("01-01-0001 0:00:00"))
+                        {
+                            <td>Sin término</td>
+                            <td>
+                                <a href="@Url.Action("TerminarVigenciaB", "Prestacion", new { codpaquete = @prestacion.codPaquete })">
+                                    <i class="far fa-calendar-alt" data-toggle="tooltip" data-placement="top" title="Terminar vigencia"></i>
+                                </a>  
+                                <a href="@Url.Action("FormEditar", "Prestacion", new { codpaquete = @prestacion.codPaquete, isapre = @prestacion.isapre, descripcion = @prestacion.descripcion })">
+                                    <i class="far fa-edit" data-toggle="tooltip" data-placement="top" title="Editar prestación"></i>
+                                </a>  
+                            </td>
+                        }
+                        else
+                        {
+                            <td>@prestacion.terminoVigencia</td>
+                            <td>
+                                <a href="@Url.Action("FormEditar", "Prestacion", new { codpaquete = @prestacion.codPaquete, isapre = @prestacion.isapre, descripcion = @prestacion.descripcion })">
+                                    <i class="far fa-edit" data-toggle="tooltip" data-placement="top" title="Editar prestación"></i>
+                                </a> 
+                            </td>
+                        }
+                       
+                    </tr>
+
+                   
+                    
+                }
+            </tbody>
+        </table>
+
+
+    }
+    else
+    {
+        <p>No se han encontrado prestaciones.</p>
+    }
+
+}
+

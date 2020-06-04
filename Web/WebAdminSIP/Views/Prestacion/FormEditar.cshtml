@@ -1,0 +1,54 @@
+﻿@model WebAdminSIP.Models.DTO.Prestacion
+@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    $(document).ready(function () {
+        
+        var codOld = $("#codPaquete").val();
+        $("#codPaqueteNew").val(codOld);
+
+    });
+</script>
+
+
+<div class="container">
+
+    <center><h1>Editar prestación : <strong style="color:red;">@Html.DisplayFor(model => model.codPaquete) </strong></h1></center>
+    <br>
+
+    @using (Html.BeginForm("Editar", "Prestacion", FormMethod.Post, new { id = "editarPrestacion" }))
+    {
+        @Html.HiddenFor(model => model.codPaquete)
+        <div class="form-row">
+
+            <div class="form-group col-md-6">
+                <label>Isapre</label>
+                @Html.TextBoxFor(model => model.isapre, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+
+            <div class="form-group col-md-6">
+                <label>Código Paquete</label>
+                @Html.TextBoxFor(model => model.codPaqueteNew, new { @class = "form-control", @type = "number" })
+            </div>
+
+            <div class="form-group col-md-6">
+                <label>Descripción</label>
+                @Html.TextBoxFor(model => model.descripcion, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group col-md-6">
+                <center>
+                    <br>
+
+                    <button type="submit" class="btn btn-outline-danger btn-lg">Editar</button>
+
+                    <button type="reset" class="btn btn-outline-danger btn-lg" onclick="limpiarFormulario()" value="Limpiar">Limpiar</button>
+
+                </center>
+            </div>
+        </div>
+    }
+
+
+</div>

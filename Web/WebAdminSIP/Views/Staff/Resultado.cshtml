@@ -1,0 +1,57 @@
+﻿@using WebAdminSIP.Models.DTO
+@model List<WebAdminSIP.Models.DTO.Medico>
+
+
+<br />
+<center>
+    <h1>Listado de Médicos</h1>
+    <br />
+
+    @*<a href="@Url.Action("FormAgregar", "Staff")">
+        <div class="btn btn-outline-danger">Agregar Médico</div>
+    </a>*@
+    @*<button type="submit" class="btn btn-outline-danger" href="@Url.Action("FormB", "Prestacion")" value="Agregar">Agregar Prestación</button>
+        <br />*@
+
+</center>
+
+@{ if (Model.Count() > 0)
+
+    {
+        <table id="TblPrestacion" class="table display nowrap">
+            <thead>
+                <tr>
+                    <th scope="col">Rut Médico</th>
+                    <th scope="col">Nombre Médico</th>
+                    <th scope="col">*</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var medico in Model)
+                {
+                    <tr>
+                        <td>@medico.rut</td>
+                        <td>@medico.nombre</td>
+
+                        <td>
+                            <a href="@Url.Action("Eliminar", "Staff", new { rut = @medico.rut })">
+                                <i class="far fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Eliminar Médico"></i>
+                            </a>
+                        </td>
+
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+
+
+    }
+    else
+    {
+        <p>No se han encontrado médicos.</p>
+    }
+
+}
+

@@ -1,0 +1,290 @@
+create or replace PACKAGE PKG_ADMINSIP AS
+    
+    TYPE cursor_prestaciones IS REF CURSOR;
+    TYPE cursor_prestadores IS REF CURSOR;
+    TYPE cursor_solicitudes IS REF CURSOR;
+    TYPE cursor_medicos IS REF CURSOR;
+
+    FUNCTION nuevaSecuencia(tabla in varchar2, isapre in varchar2, except_text OUT varchar2) return number;
+
+    PROCEDURE obtenerPrestaciones (isapre IN varchar2, except_text OUT varchar2, c_prestaciones OUT cursor_prestaciones); 
+    PROCEDURE obtenerPrestadores (isapre IN varchar2, except_text OUT varchar2, c_prestadores OUT cursor_prestadores);
+    PROCEDURE obtenerSolicitudes (accion IN varchar2, var_aux IN number, except_text OUT varchar2, c_solicitudes OUT cursor_solicitudes);
+    PROCEDURE obtenerMedicos (prestacion_id IN number, prestador_id IN number, isapre IN varchar2, except_text OUT varchar2, c_medicos OUT cursor_medicos);
+
+    PROCEDURE agregarPrestacion (isapre IN varchar2, codpaquete IN number, descripcion IN varchar2, except_text OUT varchar2);
+    PROCEDURE agregarPrestador (isapre IN varchar2, rut IN number, nombre IN number, rutinstitucion IN number,
+    secuencia IN number, estado IN varchar2, iniciovigencia IN date, observacion IN varchar2, direccion IN varchar2,
+    telefono IN varchar2, sitioweb IN varchar2, ejecutivo IN varchar2, except_text OUT varchar2);
+    PROCEDURE agregarMedico (rut IN number, nombre IN varchar2, idprest IN number, idpress IN number, isapre IN varchar2, except_text OUT varchar2);
+    PROCEDURE agregarCondicionPrestacion (idpress IN number, condicion IN varchar2, funcion IN varchar2, tipo IN varchar2, estado IN varchar2, iniciovigencia IN date, isapre IN varchar2, except_text OUT varchar2);
+
+END PKG_ADMINSIP;
+
+----------------------------------------------------------
+
+create or replace PACKAGE BODY PKG_ADMINSIP as
+
+    FUNCTION nuevaSecuencia(tabla in varchar2, isapre in varchar2, except_text OUT varchar2) return number
+    is
+    retorno number;
+    param varchar2(500);
+    begin
+        if (lower(tabla)='prestacion_sip') then
+            select max(pressip_id) + 1
+            into retorno 
+            from prestacion_sip
+            where isap_cempresa = isapre; 
+        elsif (lower(tabla)='prestador_sip') then
+            select max(prestsip_id) + 1
+            into retorno
+            from prestador_sip
+            where isap_cempresa = isapre; 
+        end if;
+    exception 
+        when others then
+            retorno:=-1;
+            param:=tabla; 
+            except_text := 'Error desconocido ' || SQLERRM; 
+            --Logger('PKG_ADMSIP.sp_creaprestacion',param,retorno);      
+    end;
+
+    PROCEDURE obtenerPrestaciones (isapre IN varchar2, except_text OUT VARCHAR2, c_prestaciones OUT cursor_prestaciones)
+    AS
+
+    BEGIN
+
+        except_text := '';
+
+        IF isapre = 'banmedica' THEN
+           BEGIN
+                OPEN c_prestaciones FOR
+                    select
+                        pres_ccod_paquete as codpaquete,
+                        paqu_descripcion as descripcion,
+                        isap_cempresa as isapre,
+                        pressip_xestado as estado,
+                        pressip_finicio_vigencia as iniciovigencia,
+                        pressip_ftermino_vigencia as terminovigencia    
+                    from prestacion_sip 
+                    where isap_cempresa = 'B';
+           END;
+        ELSIF isapre = 'vidatres' THEN
+            BEGIN
+                OPEN c_prestaciones FOR
+                    select
+                        pres_ccod_paquete as codpaquete,
+                        paqu_descripcion as descripcion,
+                        isap_cempresa as isapre,
+                        pressip_xestado as estado,
+                        pressip_finicio_vigencia as iniciovigencia,
+                        pressip_ftermino_vigencia as terminovigencia    
+                    from prestacion_sip 
+                    where isap_cempresa = 'T';
+            END;
+        END IF;
+
+        EXCEPTION
+            WHEN OTHERS THEN
+                except_text := 'Error desconocido ' || SQLERRM;    
+
+    END obtenerPrestaciones;
+
+    PROCEDURE obtenerPrestadores (isapre IN varchar2, except_text OUT VARCHAR2, c_prestadores OUT cursor_prestadores)
+    AS
+
+    BEGIN
+
+        except_text := '';
+
+        IF isapre = 'banmedica' THEN
+           BEGIN
+                OPEN c_prestadores FOR
+                    select prta_nrut as rut,
+                           prestsip_nombre_prest as nombre,
+                           isap_cempresa as isapre,
+                           prta_nsecuen_institucion as secuencia
+                    from prestador_sip
+                    where isap_cempresa = 'B';
+           END;
+        ELSIF isapre = 'vidatres' THEN
+            BEGIN
+                OPEN c_prestadores FOR
+                    select prta_nrut as rut,
+                           prestsip_nombre_prest as nombre,
+                           isap_cempresa as isapre,
+                           prta_nsecuen_institucion as secuencia
+                    from prestador_sip
+                    where isap_cempresa = 'T';
+            END;
+        END IF;
+
+        EXCEPTION
+            WHEN OTHERS THEN
+                except_text := 'Error desconocido ' || SQLERRM;    
+
+    END obtenerPrestadores;
+
+    PROCEDURE obtenerSolicitudes (accion IN varchar2, var_aux IN number, except_text OUT VARCHAR2, c_solicitudes OUT cursor_solicitudes)
+    AS
+
+    BEGIN
+
+        except_text := '';
+
+        IF accion = 'rut' THEN
+           BEGIN
+                OPEN c_solicitudes FOR
+                    select sol.solsip_id as idsolicitud,
+                           prest.paqu_descripcion as prestacion,
+                           pr.prestsip_nombre_prest as prestador,
+                           sol.isap_cempresa as isapre,
+                           sol.afil_nrut || ' - ' || af.afil_tnombres || ' ' || af.afil_tapellido_paterno || ' ' || af.afil_tapellido_materno as nombreafiliado,
+                           sol.solisip_xestado as estado
+                    from solicitud_sip sol
+                    join prestacion_sip prest
+                    on sol.pressip_id = prest.pressip_id
+                    join prestador_sip pr
+                    on sol.prestsip_id = pr.prestsip_id
+                    join afiliados af
+                    on sol.afil_nrut = af.afil_nrut
+                    where sol.afil_nrut = var_aux;
+           END;
+        ELSIF accion = 'id' THEN
+            BEGIN
+                OPEN c_solicitudes FOR
+                    select sol.solsip_id as idsolicitud,
+                           prest.paqu_descripcion as prestacion,
+                           pr.prestsip_nombre_prest as prestador,
+                           sol.isap_cempresa as isapre,
+                           sol.afil_nrut || ' - ' || af.afil_tnombres || ' ' || af.afil_tapellido_paterno || ' ' || af.afil_tapellido_materno as nombreafiliado,
+                           sol.solisip_xestado as estado
+                    from solicitud_sip sol
+                    join prestacion_sip prest
+                    on sol.pressip_id = prest.pressip_id
+                    join prestador_sip pr
+                    on sol.prestsip_id = pr.prestsip_id
+                    join afiliados af
+                    on sol.afil_nrut = af.afil_nrut
+                    where sol.solsip_id = var_aux;
+            END;
+        END IF;
+
+        EXCEPTION
+            WHEN OTHERS THEN
+                except_text := 'Error desconocido ' || SQLERRM;    
+
+    END obtenerSolicitudes;
+
+    PROCEDURE obtenerMedicos (prestacion_id IN number, prestador_id IN number, isapre IN varchar2, except_text OUT varchar2, c_medicos OUT cursor_medicos)
+    as
+    begin
+        except_text := '';
+
+        OPEN c_medicos FOR
+        select prta_nrut as rut,
+               stprest_nombre_pres as nombre
+        from staff_prestador_sip
+        where prestsip_id = prestador_id
+        and pressip_id = prestacion_id
+        and isap_cempresa = isapre
+        and stprest_xestado = 'V';
+
+        EXCEPTION
+            WHEN OTHERS THEN
+                except_text := 'Error desconocido ' || SQLERRM;
+
+    END obtenerMedicos;
+
+
+
+
+
+    PROCEDURE agregarPrestacion (isapre IN varchar2, codpaquete IN number, descripcion IN varchar2, except_text OUT varchar2)
+    as
+    begin
+
+        except_text := '';
+
+        if isapre = 'B' then
+            begin
+                INSERT INTO prestacion_sip
+                (pressip_id, pres_ccod_paquete, paqu_descripcion, pressip_xestado, pressip_finicio_vigencia, pressip_ftermino_vigencia, isap_cempresa)
+                values(nuevaSecuencia('prestacion_sip',isapre), codpaquete, descripcion, 'V', trunc(sysdate), null, 'B');
+            end;
+        elsif isapre = 'T' then
+            begin
+                INSERT INTO prestacion_sip
+                (pressip_id, pres_ccod_paquete, paqu_descripcion, pressip_xestado, pressip_finicio_vigencia, pressip_ftermino_vigencia, isap_cempresa)
+                values(nuevaSecuencia('prestacion_sip',isapre), codpaquete, descripcion, 'V', trunc(sysdate), null, 'T');
+            end;
+        end if;
+
+        EXCEPTION
+            WHEN OTHERS THEN
+                except_text := 'Error desconocido ' || SQLERRM;
+
+    end agregarPrestacion;
+
+    PROCEDURE agregarPrestador (isapre IN varchar2, rut IN number, nombre IN number, rutinstitucion IN number,
+    secuencia IN number, estado IN varchar2, iniciovigencia IN date, observacion IN varchar2, direccion IN varchar2,
+    telefono IN varchar2, sitioweb IN varchar2, ejecutivo IN varchar2, except_text OUT varchar2)
+    as
+    begin
+
+        except_text := '';
+
+        if isapre = 'B' then
+            begin
+                INSERT INTO prestador_sip
+                (prestsip_id, prta_nrut, prta_nrut_institucion, prta_nsecuen_institucion, isap_cempresa, prestsip_xestado,
+                prestsip_finicio_vigencia, prestsip_ftermino_vigencia, prestsip_observacion, prestsip_nombre_prest,
+                prestsip_direccion, prestsip_telefono, prestsip_dirweb)
+                values(nuevaSecuencia('prestador_sip',isapre), rut, rutinstitucion, secuencia, isapre, estado, iniciovigencia
+                , null, observacion, nombre, direccion, telefono, sitioweb);
+            end;
+        elsif isapre = 'T' then
+            begin
+                INSERT INTO prestador_sip
+                (prestsip_id, prta_nrut, prta_nrut_institucion, prta_nsecuen_institucion, isap_cempresa, prestsip_xestado,
+                prestsip_finicio_vigencia, prestsip_ftermino_vigencia, prestsip_observacion, prestsip_nombre_prest,
+                prestsip_direccion, prestsip_telefono, prestsip_dirweb)
+                values(nuevaSecuencia('prestador_sip',isapre), rut, rutinstitucion, secuencia, isapre, estado, iniciovigencia
+                , null, observacion, nombre, direccion, telefono, sitioweb);
+            end;
+        end if;
+
+        EXCEPTION
+            WHEN OTHERS THEN
+                except_text := 'Error desconocido ' || SQLERRM;
+
+    end agregarPrestador;
+
+    PROCEDURE agregarMedico (rut IN number, nombre IN varchar2, idprest IN number, idpress IN number, isapre IN varchar2, except_text OUT varchar2)
+    as
+    begin
+
+        except_text := '';
+
+        INSERT INTO staff_prestador_sip
+        (prestsip_id, prta_nrut, isap_cempresa, stprest_xestado, stprest_finicio_vigencia, stprest_ftermino_vigencia,
+        pressip_id, stprest_nombre_pres)
+        values(idprest, rut, isapre, 'V', trunc(sysdate), null, idpress, nombre);
+
+        EXCEPTION
+            WHEN OTHERS THEN
+                except_text := 'Error desconocido ' || SQLERRM;
+
+    end agregarMedico;
+
+    PROCEDURE agregarCondicionPrestacion (idpress IN number, condicion IN varchar2, funcion IN varchar2, tipo IN varchar2,
+    estado IN varchar2, iniciovigencia IN date, isapre IN varchar2, except_text OUT varchar2)
+    as
+    begin
+        INSERT INTO prestacion_sip_condicion
+            (pressip_id, prescond_tconcidicion, prescond_tfuncion, prescond_xtipo, prescond_xestado,
+            prescond_finicio_vigencia, prescond_ftermino_vigencia, isap_cempresa)
+            values(idpress, condicion, funcion, tipo, estado, iniciovigencia, null, isapre);
+    end agregarCondicionPrestacion;
+
+END PKG_ADMINSIP;

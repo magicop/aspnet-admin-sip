@@ -1,0 +1,114 @@
+﻿@{
+    ViewBag.Title = "Programado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" >
+    <div class="col-lg-9 col-md-12">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2><i class="fa fa-user red"></i><strong>Beneficio Cuenta Segura / Conocida</strong></h2>
+                @*<div class="panel-actions">
+                        <a href="index.html#" class="btn-setting"><i class="fa fa-rotate-right"></i></a>
+                        <a href="index.html#" class="btn-minimize"><i class="fa fa-chevron-up"></i></a>
+                        <a href="index.html#" class="btn-close"><i class="fa fa-times"></i></a>
+                    </div>*@
+            </div>
+            <div class="panel-body">
+
+                <div class="padd">
+
+                    <div class="form quick-post">
+                        <!-- Edit profile form (not working)-->
+                        <form class="form-horizontal" ng-submit="submit()">
+                            <!-- Prestación -->
+                            <div class=" form-group">
+                                <label class="control-label col-lg-2">Prestación</label>
+                                <div class="col-lg-10">
+                                    <select class="form-control" ng-model="ddlPrestacion" ng-change="getSip()">
+                                        <option ng-repeat="p in prestaciones" value="{{p.PRESSIP_ID}}">{{p.PAQU_DESCRIPCION}}</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <!--Beneficiarios-->
+                            <div class="form-group">
+                                <label class="control-label col-lg-2">Beneficiarios</label>
+                                <div class="col-lg-10">
+                                    <select class="form-control" ng-model="ddlBeneficiario">
+                                        <option ng-repeat="p in beneficiarios" value="{{p.RUT}}">{{p.NOMBRE + ' ' + p.APEPAT + ' ' + p.APEMAT }}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <!-- Prestador -->
+                            <div class="form-group">
+                                <label class="control-label col-lg-2">Prestador</label>
+                                <div class="col-lg-10">
+                                    <div class="radio" ng-repeat="p in prestadores">
+                                        <label>
+                                            <input type="radio" name="optPrestador" ng-model="$parent.prestadorSelected" ng-value="(p.PRESTSIP_ID + ':' + p.TRAMO)">
+                                            {{p.PRTA_NOMBRE}}, Copago de {{p.COPAGO}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Condivciones de acceso -->
+                            <div class="form-group">
+                                <label class="control-label col-lg-2">Condiciones de acceso</label>
+                                <div id="divCondiciones" class="col-lg-10">
+                                    <li ng-repeat="c in condiciones">
+                                        <p>{{c.PRESCOND_TCONCIDICION}}</p>
+                                    </li>
+                                </div>
+                            </div>
+                            <!-- Buttons -->
+                            <div class="form-group">
+                                <!-- Buttons -->
+                                <div class="col-lg-offset-2 col-lg-9">
+                                    <button type="submit" ng-click="GeneraPresupuesto()" class="btn btn-info">Presupuesto</button>
+                                    <button type="submit" ng-click="GeneraSolicitud()" class="btn btn-info">Solicitud de Beneficio</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-3">
+        <!-- List starts -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2><i class="fa fa-user red"></i><strong>Información del afiliado</strong></h2>
+            </div>
+            <div class="panel-body">
+
+                <div class="padd">
+                    <li>
+                        <p>Run {{afiliado.AFIL_NRUT + '-' + afiliado.AFIL_XDV}}</p>
+                    </li>
+                    <li>
+                        <p>Nombre {{afiliado.AFIL_TNOMBRES + ' ' + afiliado.AFIL_TAPELLIDO_PATERNO }}</p>
+                    </li>
+                    <li>
+                        <p>Plan {{afiliado.PLSA_CCOD}}</p>
+                    </li>
+                    <li>
+                        <p>Tramo {{afiliado.TRAMO}}</p>
+                    </li>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<span  us-spinner spinner-key="spinner-1"></span>

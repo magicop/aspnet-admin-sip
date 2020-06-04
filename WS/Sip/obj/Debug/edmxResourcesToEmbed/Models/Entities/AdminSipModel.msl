@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AdminSipModelStoreContainer" CdmEntityContainer="AdminSipEntities">
+    <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_AGREGARCONDICIONPRESTACION" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_AGREGARCONDICIONPRESTACION" />
+    <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_AGREGARMEDICO" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_AGREGARMEDICO" />
+    <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_AGREGARPRESTACION" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_AGREGARPRESTACION" />
+    <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_AGREGARPRESTADOR" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_AGREGARPRESTADOR" />
+    <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_AGREGARRESTRICCIONEXCEL" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_AGREGARRESTRICCIONEXCEL" />
+    <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_EDITARPRESTACION" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_EDITARPRESTACION" />
+    <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_ELIMINARMEDICO" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_ELIMINARMEDICO" />
+    <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_ELIMINARPRESTADOR" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_ELIMINARPRESTADOR" />
+    <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_ELIMINARRESTRICCION" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_ELIMINARRESTRICCION" />
+    <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_LISTARPRESTACIONES" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_LISTARPRESTACIONES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdminSipModel.ListarPrestacionesEntity">
+          <ScalarProperty Name="IDPRESTACION" ColumnName="IDPRESTACION" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_OBTENERMEDICOS" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_OBTENERMEDICOS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdminSipModel.ObtenerMedicoEntity">
+          <ScalarProperty Name="RUT" ColumnName="RUT" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_OBTENERPRESTACIONES" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_OBTENERPRESTACIONES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdminSipModel.ObtenerPrestacionesEntity">
+          <ScalarProperty Name="CODPAQUETE" ColumnName="CODPAQUETE" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="ISAPRE" ColumnName="ISAPRE" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="INICIOVIGENCIA" ColumnName="INICIOVIGENCIA" />
+          <ScalarProperty Name="TERMINOVIGENCIA" ColumnName="TERMINOVIGENCIA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_OBTENERPRESTADORES" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_OBTENERPRESTADORES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdminSipModel.ObtenerPrestadoresEntity">
+          <ScalarProperty Name="RUT" ColumnName="RUT" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="ISAPRE" ColumnName="ISAPRE" />
+          <ScalarProperty Name="SECUENCIA" ColumnName="SECUENCIA" />
+          <ScalarProperty Name="RUTINSTITUCION" ColumnName="RUTINSTITUCION" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_OBTENERRESTRICCIONES" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_OBTENERRESTRICCIONES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdminSipModel.ObtenerRestriccionesEntity">
+          <ScalarProperty Name="IDPRESTACION" ColumnName="IDPRESTACION" />
+          <ScalarProperty Name="CODPLAN" ColumnName="CODPLAN" />
+          <ScalarProperty Name="ISAPRE" ColumnName="ISAPRE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_OBTENERSOLICITUDES" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_OBTENERSOLICITUDES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdminSipModel.ObtenerSolicitudesEntity">
+          <ScalarProperty Name="IDSOLICITUD" ColumnName="IDSOLICITUD" />
+          <ScalarProperty Name="PRESTACION" ColumnName="PRESTACION" />
+          <ScalarProperty Name="PRESTADOR" ColumnName="PRESTADOR" />
+          <ScalarProperty Name="ISAPRE" ColumnName="ISAPRE" />
+          <ScalarProperty Name="NOMBREAFILIADO" ColumnName="NOMBREAFILIADO" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_TERMINARVIGENCIAPRESTACION" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_TERMINARVIGENCIAPRESTACION" />
+  </EntityContainerMapping>
+</Mapping>

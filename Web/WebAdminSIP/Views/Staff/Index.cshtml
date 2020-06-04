@@ -1,0 +1,50 @@
+﻿@model WebAdminSIP.Models.DTO.ListaModel
+
+
+<div class="container">
+
+    <center><h1>Buscar Staff Médico por Prestación</h1></center>
+    <br>
+
+    @using (Html.BeginForm("Buscar", "Staff", FormMethod.Post, new { id = "FormBuscarStaff" }))
+    {
+        <div class="form-row">
+
+            <div class="form-group col-md-6">
+                <label>Isapre</label>
+                @Html.DropDownListFor(model => model.isapre,
+                   new SelectList(Model.LstIsapres, "Value", "Text"), "Selecciona la isapre",
+                   new { @class = "form-control" })
+            </div>
+
+            <div class="form-group col-md-6">
+                <label>Prestación</label>
+                @Html.DropDownListFor(model => model.descripcion,
+                   new SelectList(Model.LstPrestaciones, "Value", "Text"), "Selecciona la prestacion",
+                   new { @class = "form-control" })
+            </div>
+
+            <div class="form-group col-md-6">
+                <label>Prestador</label>
+                @Html.DropDownListFor(model => model.prestador,
+                    new SelectList(string.Empty,
+                         "Value", "Text"),
+                    "Selecciona el prestador",
+                    new { @class = "form-control" })
+            </div>
+
+            <div class="form-group col-md-6">
+                <center>
+                    <br>
+
+                    <button type="submit" class="btn btn-outline-danger btn-lg" id="btnBuscarStaff" name="btnBuscarStaff">Buscar</button>
+
+                    <button type="reset" class="btn btn-outline-danger btn-lg" onclick="limpiarFormulario()" value="Limpiar">Limpiar</button>
+
+                </center>
+            </div>
+        </div>
+    }
+
+
+</div>

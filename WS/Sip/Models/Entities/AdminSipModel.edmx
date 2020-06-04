@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AdminSipModel.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="PKG_ADMINSIP2_AGREGARCONDICIONPRESTACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_ADMINSIP2.AGREGARCONDICIONPRESTACION">
+          <Parameter Name="IDPRESS" Type="number" Mode="In" />
+          <Parameter Name="CONDICION" Type="varchar2" Mode="In" />
+          <Parameter Name="FUNCION" Type="varchar2" Mode="In" />
+          <Parameter Name="TIPO" Type="varchar2" Mode="In" />
+          <Parameter Name="ESTADO" Type="varchar2" Mode="In" />
+          <Parameter Name="INICIOVIGENCIA" Type="date" Mode="In" />
+          <Parameter Name="ISAPRE" Type="varchar2" Mode="In" />
+          <Parameter Name="EXCEPT_TEXT" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="PKG_ADMINSIP2_AGREGARMEDICO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_ADMINSIP2.AGREGARMEDICO">
+          <Parameter Name="RUT" Type="number" Mode="In" />
+          <Parameter Name="NOMBRE" Type="varchar2" Mode="In" />
+          <Parameter Name="IDPREST" Type="number" Mode="In" />
+          <Parameter Name="IDPRESS" Type="number" Mode="In" />
+          <Parameter Name="ISAPRE" Type="varchar2" Mode="In" />
+          <Parameter Name="EXCEPT_TEXT" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="PKG_ADMINSIP2_AGREGARPRESTACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_ADMINSIP2.AGREGARPRESTACION">
+          <Parameter Name="ISAPRE" Type="varchar2" Mode="In" />
+          <Parameter Name="CODPAQUETE" Type="number" Mode="In" />
+          <Parameter Name="DESCRIPCION" Type="varchar2" Mode="In" />
+          <Parameter Name="EXCEPT_TEXT" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="PKG_ADMINSIP2_AGREGARPRESTADOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_ADMINSIP2.AGREGARPRESTADOR">
+          <Parameter Name="ISAPRE" Type="varchar2" Mode="In" />
+          <Parameter Name="RUT" Type="number" Mode="In" />
+          <Parameter Name="NOMBRE" Type="varchar2" Mode="In" />
+          <Parameter Name="RUTINSTITUCION" Type="number" Mode="In" />
+          <Parameter Name="SECUENCIA" Type="number" Mode="In" />
+          <Parameter Name="ESTADO" Type="varchar2" Mode="In" />
+          <Parameter Name="INICIOVIGENCIA" Type="date" Mode="In" />
+          <Parameter Name="OBSERVACION" Type="varchar2" Mode="In" />
+          <Parameter Name="DIRECCION" Type="varchar2" Mode="In" />
+          <Parameter Name="TELEFONO" Type="varchar2" Mode="In" />
+          <Parameter Name="SITIOWEB" Type="varchar2" Mode="In" />
+          <Parameter Name="EXCEPT_TEXT" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="PKG_ADMINSIP2_AGREGARRESTRICCIONEXCEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_ADMINSIP2.AGREGARRESTRICCIONEXCEL">
+          <Parameter Name="IDPRESTACION" Type="number" Mode="In" />
+          <Parameter Name="CODPLAN" Type="varchar2" Mode="In" />
+          <Parameter Name="ISAPRE" Type="varchar2" Mode="In" />
+          <Parameter Name="EXCEPT_TEXT" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="PKG_ADMINSIP2_EDITARPRESTACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_ADMINSIP2.EDITARPRESTACION">
+          <Parameter Name="CODPAQUETEANTERIOR" Type="number" Mode="In" />
+          <Parameter Name="ISAPRE" Type="varchar2" Mode="In" />
+          <Parameter Name="CODPAQUETENUEVO" Type="number" Mode="In" />
+          <Parameter Name="DESCRIPCION" Type="varchar2" Mode="In" />
+          <Parameter Name="EXCEPT_TEXT" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="PKG_ADMINSIP2_ELIMINARMEDICO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_ADMINSIP2.ELIMINARMEDICO">
+          <Parameter Name="RUT" Type="number" Mode="In" />
+          <Parameter Name="EXCEPT_TEXT" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="PKG_ADMINSIP2_ELIMINARPRESTADOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_ADMINSIP2.ELIMINARPRESTADOR">
+          <Parameter Name="RUT" Type="number" Mode="In" />
+          <Parameter Name="ISAPRE" Type="varchar2" Mode="In" />
+          <Parameter Name="EXCEPT_TEXT" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="PKG_ADMINSIP2_ELIMINARRESTRICCION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_ADMINSIP2.ELIMINARRESTRICCION">
+          <Parameter Name="CODPLAN" Type="varchar2" Mode="In" />
+          <Parameter Name="ISAPRE" Type="varchar2" Mode="In" />
+          <Parameter Name="EXCEPT_TEXT" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="PKG_ADMINSIP2_LISTARPRESTACIONES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_ADMINSIP2.LISTARPRESTACIONES">
+          <Parameter Name="EXCEPT_TEXT" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="PKG_ADMINSIP2_NUEVASECUENCIA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_ADMINSIP2.NUEVASECUENCIA" ReturnType="number">
+          <Parameter Name="TABLA" Type="varchar2" Mode="In" />
+          <Parameter Name="ISAPRE" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="PKG_ADMINSIP2_OBTENERINSTITUCIONES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_ADMINSIP2.OBTENERINSTITUCIONES">
+          <Parameter Name="ISAPRE" Type="varchar2" Mode="In" />
+          <Parameter Name="IDPRESTACION" Type="number" Mode="In" />
+          <Parameter Name="EXCEPT_TEXT" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="PKG_ADMINSIP2_OBTENERMEDICOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_ADMINSIP2.OBTENERMEDICOS">
+          <Parameter Name="PRESTACION_ID" Type="number" Mode="In" />
+          <Parameter Name="PRESTADOR_ID" Type="number" Mode="In" />
+          <Parameter Name="ISAPRE" Type="varchar2" Mode="In" />
+          <Parameter Name="EXCEPT_TEXT" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="PKG_ADMINSIP2_OBTENERPRESTACIONES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_ADMINSIP2.OBTENERPRESTACIONES">
+          <Parameter Name="ISAPRE" Type="varchar2" Mode="In" />
+          <Parameter Name="EXCEPT_TEXT" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="PKG_ADMINSIP2_OBTENERPRESTADORES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_ADMINSIP2.OBTENERPRESTADORES">
+          <Parameter Name="ISAPRE" Type="varchar2" Mode="In" />
+          <Parameter Name="EXCEPT_TEXT" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="PKG_ADMINSIP2_OBTENERRESTRICCIONES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_ADMINSIP2.OBTENERRESTRICCIONES">
+          <Parameter Name="CODPLAN" Type="varchar2" Mode="In" />
+          <Parameter Name="ISAPRE" Type="varchar2" Mode="In" />
+          <Parameter Name="EXCEPT_TEXT" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="PKG_ADMINSIP2_OBTENERSOLICITUDES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_ADMINSIP2.OBTENERSOLICITUDES">
+          <Parameter Name="ACCION" Type="varchar2" Mode="In" />
+          <Parameter Name="VAR_AUX" Type="number" Mode="In" />
+          <Parameter Name="EXCEPT_TEXT" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="PKG_ADMINSIP2_TERMINARVIGENCIAPRESTACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_ADMINSIP2.TERMINARVIGENCIAPRESTACION">
+          <Parameter Name="CODPAQUETE" Type="number" Mode="In" />
+          <Parameter Name="EXCEPT_TEXT" Type="varchar2" Mode="Out" />
+        </Function>
+        <EntityContainer Name="AdminSipModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AdminSipModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="AdminSipEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="PKG_ADMINSIP2_AGREGARCONDICIONPRESTACION">
+            <Parameter Name="IDPRESS" Mode="In" Type="Decimal" />
+            <Parameter Name="CONDICION" Mode="In" Type="String" />
+            <Parameter Name="FUNCION" Mode="In" Type="String" />
+            <Parameter Name="TIPO" Mode="In" Type="String" />
+            <Parameter Name="ESTADO" Mode="In" Type="String" />
+            <Parameter Name="INICIOVIGENCIA" Mode="In" Type="DateTime" />
+            <Parameter Name="ISAPRE" Mode="In" Type="String" />
+            <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PKG_ADMINSIP2_AGREGARMEDICO">
+            <Parameter Name="RUT" Mode="In" Type="Decimal" />
+            <Parameter Name="NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="IDPREST" Mode="In" Type="Decimal" />
+            <Parameter Name="IDPRESS" Mode="In" Type="Decimal" />
+            <Parameter Name="ISAPRE" Mode="In" Type="String" />
+            <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PKG_ADMINSIP2_AGREGARPRESTACION">
+            <Parameter Name="ISAPRE" Mode="In" Type="String" />
+            <Parameter Name="CODPAQUETE" Mode="In" Type="Decimal" />
+            <Parameter Name="DESCRIPCION" Mode="In" Type="String" />
+            <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PKG_ADMINSIP2_AGREGARPRESTADOR">
+            <Parameter Name="ISAPRE" Mode="In" Type="String" />
+            <Parameter Name="RUT" Mode="In" Type="Decimal" />
+            <Parameter Name="NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="RUTINSTITUCION" Mode="In" Type="Decimal" />
+            <Parameter Name="SECUENCIA" Mode="In" Type="Decimal" />
+            <Parameter Name="ESTADO" Mode="In" Type="String" />
+            <Parameter Name="INICIOVIGENCIA" Mode="In" Type="DateTime" />
+            <Parameter Name="OBSERVACION" Mode="In" Type="String" />
+            <Parameter Name="DIRECCION" Mode="In" Type="String" />
+            <Parameter Name="TELEFONO" Mode="In" Type="String" />
+            <Parameter Name="SITIOWEB" Mode="In" Type="String" />
+            <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PKG_ADMINSIP2_AGREGARRESTRICCIONEXCEL">
+            <Parameter Name="IDPRESTACION" Mode="In" Type="Decimal" />
+            <Parameter Name="CODPLAN" Mode="In" Type="String" />
+            <Parameter Name="ISAPRE" Mode="In" Type="String" />
+            <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PKG_ADMINSIP2_EDITARPRESTACION">
+            <Parameter Name="CODPAQUETEANTERIOR" Mode="In" Type="Decimal" />
+            <Parameter Name="ISAPRE" Mode="In" Type="String" />
+            <Parameter Name="CODPAQUETENUEVO" Mode="In" Type="Decimal" />
+            <Parameter Name="DESCRIPCION" Mode="In" Type="String" />
+            <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PKG_ADMINSIP2_ELIMINARMEDICO">
+            <Parameter Name="RUT" Mode="In" Type="Decimal" />
+            <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PKG_ADMINSIP2_ELIMINARPRESTADOR">
+            <Parameter Name="RUT" Mode="In" Type="Decimal" />
+            <Parameter Name="ISAPRE" Mode="In" Type="String" />
+            <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PKG_ADMINSIP2_ELIMINARRESTRICCION">
+            <Parameter Name="CODPLAN" Mode="In" Type="String" />
+            <Parameter Name="ISAPRE" Mode="In" Type="String" />
+            <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PKG_ADMINSIP2_LISTARPRESTACIONES" ReturnType="Collection(AdminSipModel.ListarPrestacionesEntity)">
+            <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PKG_ADMINSIP2_OBTENERMEDICOS" ReturnType="Collection(AdminSipModel.ObtenerMedicoEntity)">
+            <Parameter Name="PRESTACION_ID" Mode="In" Type="Decimal" />
+            <Parameter Name="PRESTADOR_ID" Mode="In" Type="Decimal" />
+            <Parameter Name="ISAPRE" Mode="In" Type="String" />
+            <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PKG_ADMINSIP2_OBTENERPRESTACIONES" ReturnType="Collection(AdminSipModel.ObtenerPrestacionesEntity)">
+            <Parameter Name="ISAPRE" Mode="In" Type="String" />
+            <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PKG_ADMINSIP2_OBTENERPRESTADORES" ReturnType="Collection(AdminSipModel.ObtenerPrestadoresEntity)">
+            <Parameter Name="ISAPRE" Mode="In" Type="String" />
+            <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PKG_ADMINSIP2_OBTENERRESTRICCIONES" ReturnType="Collection(AdminSipModel.ObtenerRestriccionesEntity)">
+            <Parameter Name="CODPLAN" Mode="In" Type="String" />
+            <Parameter Name="ISAPRE" Mode="In" Type="String" />
+            <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PKG_ADMINSIP2_OBTENERSOLICITUDES" ReturnType="Collection(AdminSipModel.ObtenerSolicitudesEntity)">
+            <Parameter Name="ACCION" Mode="In" Type="String" />
+            <Parameter Name="VAR_AUX" Mode="In" Type="Decimal" />
+            <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PKG_ADMINSIP2_TERMINARVIGENCIAPRESTACION">
+            <Parameter Name="CODPAQUETE" Mode="In" Type="Decimal" />
+            <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="ListarPrestacionesEntity">
+          <Property Type="Decimal" Name="IDPRESTACION" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ObtenerMedicoEntity">
+          <Property Type="Decimal" Name="RUT" Nullable="false" />
+          <Property Type="String" Name="NOMBRE" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ObtenerPrestacionesEntity">
+          <Property Type="Decimal" Name="CODPAQUETE" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION" Nullable="false" />
+          <Property Type="String" Name="ISAPRE" Nullable="false" />
+          <Property Type="String" Name="ESTADO" Nullable="false" />
+          <Property Type="DateTime" Name="INICIOVIGENCIA" Nullable="false" />
+          <Property Type="DateTime" Name="TERMINOVIGENCIA" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ObtenerPrestadoresEntity">
+          <Property Type="Decimal" Name="RUT" Nullable="false" />
+          <Property Type="String" Name="NOMBRE" Nullable="true" />
+          <Property Type="String" Name="ISAPRE" Nullable="false" />
+          <Property Type="Decimal" Name="SECUENCIA" Nullable="false" />
+          <Property Type="Decimal" Name="RUTINSTITUCION" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ObtenerRestriccionesEntity">
+          <Property Type="Decimal" Name="IDPRESTACION" Nullable="false" />
+          <Property Type="String" Name="CODPLAN" Nullable="false" />
+          <Property Type="String" Name="ISAPRE" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ObtenerSolicitudesEntity">
+          <Property Type="Decimal" Name="IDSOLICITUD" Nullable="false" />
+          <Property Type="String" Name="PRESTACION" Nullable="false" />
+          <Property Type="String" Name="PRESTADOR" Nullable="true" />
+          <Property Type="String" Name="ISAPRE" Nullable="false" />
+          <Property Type="String" Name="NOMBREAFILIADO" Nullable="true" />
+          <Property Type="String" Name="ESTADO" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AdminSipModelStoreContainer" CdmEntityContainer="AdminSipEntities" >
+          <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_AGREGARCONDICIONPRESTACION" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_AGREGARCONDICIONPRESTACION" />
+          <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_AGREGARMEDICO" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_AGREGARMEDICO" />
+          <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_AGREGARPRESTACION" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_AGREGARPRESTACION" />
+          <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_AGREGARPRESTADOR" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_AGREGARPRESTADOR" />
+          <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_AGREGARRESTRICCIONEXCEL" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_AGREGARRESTRICCIONEXCEL" />
+          <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_EDITARPRESTACION" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_EDITARPRESTACION" />
+          <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_ELIMINARMEDICO" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_ELIMINARMEDICO" />
+          <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_ELIMINARPRESTADOR" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_ELIMINARPRESTADOR" />
+          <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_ELIMINARRESTRICCION" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_ELIMINARRESTRICCION" />
+          <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_LISTARPRESTACIONES" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_LISTARPRESTACIONES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdminSipModel.ListarPrestacionesEntity">
+                <ScalarProperty Name="IDPRESTACION" ColumnName="IDPRESTACION" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_OBTENERMEDICOS" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_OBTENERMEDICOS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdminSipModel.ObtenerMedicoEntity">
+                <ScalarProperty Name="RUT" ColumnName="RUT" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_OBTENERPRESTACIONES" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_OBTENERPRESTACIONES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdminSipModel.ObtenerPrestacionesEntity">
+                <ScalarProperty Name="CODPAQUETE" ColumnName="CODPAQUETE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="ISAPRE" ColumnName="ISAPRE" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="INICIOVIGENCIA" ColumnName="INICIOVIGENCIA" />
+                <ScalarProperty Name="TERMINOVIGENCIA" ColumnName="TERMINOVIGENCIA" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_OBTENERPRESTADORES" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_OBTENERPRESTADORES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdminSipModel.ObtenerPrestadoresEntity">
+                <ScalarProperty Name="RUT" ColumnName="RUT" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ISAPRE" ColumnName="ISAPRE" />
+                <ScalarProperty Name="SECUENCIA" ColumnName="SECUENCIA" />
+                <ScalarProperty Name="RUTINSTITUCION" ColumnName="RUTINSTITUCION" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_OBTENERRESTRICCIONES" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_OBTENERRESTRICCIONES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdminSipModel.ObtenerRestriccionesEntity">
+                <ScalarProperty Name="IDPRESTACION" ColumnName="IDPRESTACION" />
+                <ScalarProperty Name="CODPLAN" ColumnName="CODPLAN" />
+                <ScalarProperty Name="ISAPRE" ColumnName="ISAPRE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_OBTENERSOLICITUDES" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_OBTENERSOLICITUDES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdminSipModel.ObtenerSolicitudesEntity">
+                <ScalarProperty Name="IDSOLICITUD" ColumnName="IDSOLICITUD" />
+                <ScalarProperty Name="PRESTACION" ColumnName="PRESTACION" />
+                <ScalarProperty Name="PRESTADOR" ColumnName="PRESTADOR" />
+                <ScalarProperty Name="ISAPRE" ColumnName="ISAPRE" />
+                <ScalarProperty Name="NOMBREAFILIADO" ColumnName="NOMBREAFILIADO" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PKG_ADMINSIP2_TERMINARVIGENCIAPRESTACION" FunctionName="AdminSipModel.Store.PKG_ADMINSIP2_TERMINARVIGENCIAPRESTACION" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

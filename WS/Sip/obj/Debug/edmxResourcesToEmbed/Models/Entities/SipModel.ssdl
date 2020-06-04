@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SipModel.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="MAIL_PRESTADOR_SIP">
+    <Key>
+      <PropertyRef Name="PRESTSIP_ID" />
+      <PropertyRef Name="MAPRES_TCORREO" />
+      <PropertyRef Name="ISAP_CEMPRESA" />
+    </Key>
+    <Property Name="PRESTSIP_ID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="MAPRES_TCORREO" Type="varchar2" MaxLength="50" Nullable="false" />
+    <Property Name="ISAP_CEMPRESA" Type="varchar2" MaxLength="1" Nullable="false" />
+    <Property Name="MAPRES_XESTADO" Type="varchar2" MaxLength="1" />
+    <Property Name="MAPRES_FINICIO_VIGENCIA" Type="date" />
+    <Property Name="MAPRES_FTERMINO_VIGENCIA" Type="date" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SOLISIP.V_AFILIADOSIP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="V_AFILIADOSIP">
+    <Key>
+      <PropertyRef Name="AFIL_NRUT" />
+      <PropertyRef Name="ISAP_CEMPRESA" />
+    </Key>
+    <Property Name="AFIL_NRUT" Type="number" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="AFIL_XDV" Type="varchar2" MaxLength="1" Nullable="false" />
+    <Property Name="AFIL_TNOMBRES" Type="varchar2" MaxLength="30" Nullable="false" />
+    <Property Name="AFIL_TAPELLIDO_PATERNO" Type="varchar2" MaxLength="30" Nullable="false" />
+    <Property Name="AFIL_TAPELLIDO_MATERNO" Type="varchar2" MaxLength="30" />
+    <Property Name="ISAP_CEMPRESA" Type="varchar2" MaxLength="1" Nullable="false" />
+    <Property Name="PLSA_CCOD" Type="varchar2" MaxLength="14" />
+    <Property Name="TRAMO" Type="varchar2" MaxLength="10" />
+    <Property Name="TIENECOBERTURASIP" Type="varchar2" MaxLength="4000" />
+    <Property Name="TIENERESTRICCIONES" Type="varchar2" MaxLength="4000" />
+  </EntityType>
+  <Function Name="PKG_SIPNET_OBTENER_BENEFICIARIOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_SIPNET.OBTENER_BENEFICIARIOS">
+    <Parameter Name="PR_PRESSID" Type="number" Mode="In" />
+    <Parameter Name="PR_AFIL_NRUT" Type="number" Mode="In" />
+    <Parameter Name="PR_ISAP_CEMPRESA" Type="varchar2" Mode="In" />
+  </Function>
+  <Function Name="PKG_SIPNET_OBTENER_CONDICIONES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_SIPNET.OBTENER_CONDICIONES">
+    <Parameter Name="PR_PRESSID" Type="number" Mode="In" />
+    <Parameter Name="PR_ISAPRE" Type="varchar2" Mode="In" />
+  </Function>
+  <Function Name="PKG_SIPNET_OBTENER_PRESTACIONES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_SIPNET.OBTENER_PRESTACIONES">
+    <Parameter Name="PR_PLAN" Type="varchar2" Mode="In" />
+    <Parameter Name="PR_ISAPRE" Type="varchar2" Mode="In" />
+  </Function>
+  <Function Name="PKG_SIPNET_OBTENER_PRESTADORES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_SIPNET.OBTENER_PRESTADORES">
+    <Parameter Name="PR_PLAN" Type="varchar2" Mode="In" />
+    <Parameter Name="PR_PRESSID" Type="number" Mode="In" />
+    <Parameter Name="PR_ISAPRE" Type="varchar2" Mode="In" />
+  </Function>
+  <Function Name="PKG_SIPNET_OBTENER_STAFF" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_SIPNET.OBTENER_STAFF">
+    <Parameter Name="PR_PRESTID" Type="number" Mode="In" />
+    <Parameter Name="PR_PRESSID" Type="number" Mode="In" />
+    <Parameter Name="PR_ISAPRE" Type="varchar2" Mode="In" />
+  </Function>
+  <Function Name="PKG_SIPNET_SP_GRABA_PREVIEW" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_SIPNET.SP_GRABA_PREVIEW">
+    <Parameter Name="P_AFILRUT" Type="number" Mode="In" />
+    <Parameter Name="P_CARGRUT" Type="number" Mode="In" />
+    <Parameter Name="P_PRESSID" Type="number" Mode="In" />
+    <Parameter Name="P_PRESTID" Type="number" Mode="In" />
+    <Parameter Name="P_CANAL" Type="varchar2" Mode="In" />
+    <Parameter Name="P_ISAPRE" Type="varchar2" Mode="In" />
+    <Parameter Name="P_EJECRUT" Type="number" Mode="In" />
+    <Parameter Name="P_AGENCIA" Type="varchar2" Mode="In" />
+    <Parameter Name="P_PLANSALUD" Type="varchar2" Mode="In" />
+    <Parameter Name="P_TRAMO_SIP" Type="varchar2" Mode="In" />
+    <Parameter Name="P_SOLID" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PKG_SIPNET_SP_GRABA_SOLICITUD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_SIPNET.SP_GRABA_SOLICITUD">
+    <Parameter Name="P_AFILRUT" Type="number" Mode="In" />
+    <Parameter Name="P_CARGRUT" Type="number" Mode="In" />
+    <Parameter Name="P_PRESSID" Type="number" Mode="In" />
+    <Parameter Name="P_PRESTID" Type="number" Mode="In" />
+    <Parameter Name="P_CANAL" Type="varchar2" Mode="In" />
+    <Parameter Name="P_ISAPRE" Type="varchar2" Mode="In" />
+    <Parameter Name="P_EJECRUT" Type="number" Mode="In" />
+    <Parameter Name="P_AGENCIA" Type="varchar2" Mode="In" />
+    <Parameter Name="P_PLANSALUD" Type="varchar2" Mode="In" />
+    <Parameter Name="P_TRAMO_SIP" Type="varchar2" Mode="In" />
+    <Parameter Name="P_SOLID" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PKG_SIPNET_SP_OBTENER_PREVIEW" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_SIPNET.SP_OBTENER_PREVIEW">
+    <Parameter Name="P_SOLID" Type="number" Mode="In" />
+  </Function>
+  <Function Name="PKG_SIPNET_SP_OBTENER_SIP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SOLISIP" StoreFunctionName="PKG_SIPNET.SP_OBTENER_SIP">
+    <Parameter Name="P_SOLID" Type="number" Mode="In" />
+  </Function>
+  <EntityContainer Name="SipModelStoreContainer">
+    <EntitySet Name="MAIL_PRESTADOR_SIP" EntityType="Self.MAIL_PRESTADOR_SIP" Schema="SOLISIP" store:Type="Tables" />
+    <EntitySet Name="V_AFILIADOSIP" EntityType="Self.V_AFILIADOSIP" store:Type="Views" store:Schema="SOLISIP">
+      <DefiningQuery>SELECT 
+"V_AFILIADOSIP"."AFIL_NRUT" AS "AFIL_NRUT", 
+"V_AFILIADOSIP"."AFIL_XDV" AS "AFIL_XDV", 
+"V_AFILIADOSIP"."AFIL_TNOMBRES" AS "AFIL_TNOMBRES", 
+"V_AFILIADOSIP"."AFIL_TAPELLIDO_PATERNO" AS "AFIL_TAPELLIDO_PATERNO", 
+"V_AFILIADOSIP"."AFIL_TAPELLIDO_MATERNO" AS "AFIL_TAPELLIDO_MATERNO", 
+"V_AFILIADOSIP"."ISAP_CEMPRESA" AS "ISAP_CEMPRESA", 
+"V_AFILIADOSIP"."PLSA_CCOD" AS "PLSA_CCOD", 
+"V_AFILIADOSIP"."TRAMO" AS "TRAMO", 
+"V_AFILIADOSIP"."TIENECOBERTURASIP" AS "TIENECOBERTURASIP", 
+"V_AFILIADOSIP"."TIENERESTRICCIONES" AS "TIENERESTRICCIONES"
+FROM "SOLISIP"."V_AFILIADOSIP" "V_AFILIADOSIP"</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

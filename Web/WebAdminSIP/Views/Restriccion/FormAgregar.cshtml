@@ -1,0 +1,65 @@
+﻿@model WebAdminSIP.Models.DTO.Restriccion
+
+
+<div class="container">
+
+    <center><h1>Agregar Restricción</h1></center>
+    <br>
+
+    @using (Html.BeginForm("Agregar", "Restriccion", FormMethod.Post, new { id = "FormAgregarRestriccionManual", name = "FormAgregarRestriccionManual" }))
+    {
+        <div class="form-row">
+
+            <div class="form-group col-md-3">
+                <label>Código plan</label>
+                @Html.TextBoxFor(model => model.codplan, new { @class = "form-control", @type = "number" })
+            </div>
+
+            <div class="form-group col-md-3">
+                <label>Isapre</label>
+                @Html.DropDownListFor(model => model.isapre,
+                   new SelectList(Model.LstIsapres, "Value", "Text"), "Selecciona la isapre",
+                   new { @class = "form-control" })
+            </div>
+
+            <div class="form-group col-md-6">
+                <center>
+                    <br>
+
+                    <button type="submit" class="btn btn-outline-danger btn-lg" id="btnAgregarRestriccionManual" name="btnAgregarRestriccionManual">Agregar</button>
+
+                    <button type="reset" class="btn btn-outline-danger btn-lg" onclick="limpiarFormulario()" value="Limpiar">Limpiar</button>
+
+                </center>
+            </div>
+        </div>
+    }
+
+    <br />
+    <hr />
+    <br />
+
+    @using (Html.BeginForm("AgregarExcel", "Restriccion", FormMethod.Post, new { @enctype = "multipart/form-data", id = "FormAgregarRestriccionExcel", name = "FormAgregarRestriccionExcel" }))
+    {
+        <div class="form-row">
+
+            <div class="form-group col-md-6">
+                <label>Ingrese archivo Excel (.xlsx)</label>
+                <input type="file" id="FileUpload" name="FileUpload" class="form-control" /><br />
+            </div>
+
+            <div class="form-group col-md-6">
+                <center>
+                    <br>
+
+                    <button type="submit" class="btn btn-outline-danger btn-lg" id="fileUploadExcel" name="fileUploadExcel">Agregar</button>
+
+                    <button type="reset" class="btn btn-outline-danger btn-lg" onclick="limpiarFormulario()" value="Limpiar">Limpiar</button>
+
+                </center>
+            </div>
+        </div>
+    }
+
+
+</div>

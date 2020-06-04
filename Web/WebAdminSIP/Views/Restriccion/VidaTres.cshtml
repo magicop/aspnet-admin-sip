@@ -1,0 +1,66 @@
+﻿@using WebAdminSIP.Models.DTO
+@model List<WebAdminSIP.Models.DTO.Restriccion>
+
+
+<br />
+<center>
+    <h1>Listado de Restricciones</h1>
+    <br />
+
+    <a href="@Url.Action("FormAgregar", "Restriccion")">
+        <div class="btn btn-outline-danger">Agregar Restricción</div>
+    </a>
+    @*<button type="submit" class="btn btn-outline-danger" href="@Url.Action("FormB", "Prestacion")" value="Agregar">Agregar Prestación</button>
+        <br />*@
+
+</center>
+
+@{ if (Model.Count() > 0)
+
+    {
+        <table id="TblPrestacion" class="table display nowrap">
+            <thead>
+                <tr>
+                    <th scope="col">Id Prestación</th>
+                    <th scope="col">Código plan</th>
+                    <th scope="col">Isapre</th>
+                    <th scope="col">*</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var restriccion in Model)
+                {
+                    <tr>
+                        <td>@restriccion.idprestacion</td>
+                        <td>@restriccion.codplan</td>
+
+                        @if (@restriccion.isapre == "B")
+                        {
+                            <td>Banmédica</td>
+                        }
+                        else
+                        {
+                            <td>Vida Tres</td>
+                        }
+
+                        <td>
+                            <a href="@Url.Action("Eliminar", "Restriccion", new { codplan = @restriccion.codplan, isapre = "vidatres" })">
+                                <i class="far fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Eliminar Restricción"></i>
+                            </a>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+    }
+    else
+    {
+        <p>No se han encontrado prestaciones.</p>
+    }
+
+}
+

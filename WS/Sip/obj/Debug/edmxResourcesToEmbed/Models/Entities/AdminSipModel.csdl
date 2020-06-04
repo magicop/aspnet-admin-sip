@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AdminSipModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="AdminSipEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="PKG_ADMINSIP2_AGREGARCONDICIONPRESTACION">
+      <Parameter Name="IDPRESS" Mode="In" Type="Decimal" />
+      <Parameter Name="CONDICION" Mode="In" Type="String" />
+      <Parameter Name="FUNCION" Mode="In" Type="String" />
+      <Parameter Name="TIPO" Mode="In" Type="String" />
+      <Parameter Name="ESTADO" Mode="In" Type="String" />
+      <Parameter Name="INICIOVIGENCIA" Mode="In" Type="DateTime" />
+      <Parameter Name="ISAPRE" Mode="In" Type="String" />
+      <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PKG_ADMINSIP2_AGREGARMEDICO">
+      <Parameter Name="RUT" Mode="In" Type="Decimal" />
+      <Parameter Name="NOMBRE" Mode="In" Type="String" />
+      <Parameter Name="IDPREST" Mode="In" Type="Decimal" />
+      <Parameter Name="IDPRESS" Mode="In" Type="Decimal" />
+      <Parameter Name="ISAPRE" Mode="In" Type="String" />
+      <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PKG_ADMINSIP2_AGREGARPRESTACION">
+      <Parameter Name="ISAPRE" Mode="In" Type="String" />
+      <Parameter Name="CODPAQUETE" Mode="In" Type="Decimal" />
+      <Parameter Name="DESCRIPCION" Mode="In" Type="String" />
+      <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PKG_ADMINSIP2_AGREGARPRESTADOR">
+      <Parameter Name="ISAPRE" Mode="In" Type="String" />
+      <Parameter Name="RUT" Mode="In" Type="Decimal" />
+      <Parameter Name="NOMBRE" Mode="In" Type="String" />
+      <Parameter Name="RUTINSTITUCION" Mode="In" Type="Decimal" />
+      <Parameter Name="SECUENCIA" Mode="In" Type="Decimal" />
+      <Parameter Name="ESTADO" Mode="In" Type="String" />
+      <Parameter Name="INICIOVIGENCIA" Mode="In" Type="DateTime" />
+      <Parameter Name="OBSERVACION" Mode="In" Type="String" />
+      <Parameter Name="DIRECCION" Mode="In" Type="String" />
+      <Parameter Name="TELEFONO" Mode="In" Type="String" />
+      <Parameter Name="SITIOWEB" Mode="In" Type="String" />
+      <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PKG_ADMINSIP2_AGREGARRESTRICCIONEXCEL">
+      <Parameter Name="IDPRESTACION" Mode="In" Type="Decimal" />
+      <Parameter Name="CODPLAN" Mode="In" Type="String" />
+      <Parameter Name="ISAPRE" Mode="In" Type="String" />
+      <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PKG_ADMINSIP2_EDITARPRESTACION">
+      <Parameter Name="CODPAQUETEANTERIOR" Mode="In" Type="Decimal" />
+      <Parameter Name="ISAPRE" Mode="In" Type="String" />
+      <Parameter Name="CODPAQUETENUEVO" Mode="In" Type="Decimal" />
+      <Parameter Name="DESCRIPCION" Mode="In" Type="String" />
+      <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PKG_ADMINSIP2_ELIMINARMEDICO">
+      <Parameter Name="RUT" Mode="In" Type="Decimal" />
+      <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PKG_ADMINSIP2_ELIMINARPRESTADOR">
+      <Parameter Name="RUT" Mode="In" Type="Decimal" />
+      <Parameter Name="ISAPRE" Mode="In" Type="String" />
+      <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PKG_ADMINSIP2_ELIMINARRESTRICCION">
+      <Parameter Name="CODPLAN" Mode="In" Type="String" />
+      <Parameter Name="ISAPRE" Mode="In" Type="String" />
+      <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PKG_ADMINSIP2_LISTARPRESTACIONES" ReturnType="Collection(AdminSipModel.ListarPrestacionesEntity)">
+      <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PKG_ADMINSIP2_OBTENERMEDICOS" ReturnType="Collection(AdminSipModel.ObtenerMedicoEntity)">
+      <Parameter Name="PRESTACION_ID" Mode="In" Type="Decimal" />
+      <Parameter Name="PRESTADOR_ID" Mode="In" Type="Decimal" />
+      <Parameter Name="ISAPRE" Mode="In" Type="String" />
+      <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PKG_ADMINSIP2_OBTENERPRESTACIONES" ReturnType="Collection(AdminSipModel.ObtenerPrestacionesEntity)">
+      <Parameter Name="ISAPRE" Mode="In" Type="String" />
+      <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PKG_ADMINSIP2_OBTENERPRESTADORES" ReturnType="Collection(AdminSipModel.ObtenerPrestadoresEntity)">
+      <Parameter Name="ISAPRE" Mode="In" Type="String" />
+      <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PKG_ADMINSIP2_OBTENERRESTRICCIONES" ReturnType="Collection(AdminSipModel.ObtenerRestriccionesEntity)">
+      <Parameter Name="CODPLAN" Mode="In" Type="String" />
+      <Parameter Name="ISAPRE" Mode="In" Type="String" />
+      <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PKG_ADMINSIP2_OBTENERSOLICITUDES" ReturnType="Collection(AdminSipModel.ObtenerSolicitudesEntity)">
+      <Parameter Name="ACCION" Mode="In" Type="String" />
+      <Parameter Name="VAR_AUX" Mode="In" Type="Decimal" />
+      <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PKG_ADMINSIP2_TERMINARVIGENCIAPRESTACION">
+      <Parameter Name="CODPAQUETE" Mode="In" Type="Decimal" />
+      <Parameter Name="EXCEPT_TEXT" Mode="Out" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="ListarPrestacionesEntity">
+    <Property Type="Decimal" Name="IDPRESTACION" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="ObtenerMedicoEntity">
+    <Property Type="Decimal" Name="RUT" Nullable="false" />
+    <Property Type="String" Name="NOMBRE" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ObtenerPrestacionesEntity">
+    <Property Type="Decimal" Name="CODPAQUETE" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION" Nullable="false" />
+    <Property Type="String" Name="ISAPRE" Nullable="false" />
+    <Property Type="String" Name="ESTADO" Nullable="false" />
+    <Property Type="DateTime" Name="INICIOVIGENCIA" Nullable="false" />
+    <Property Type="DateTime" Name="TERMINOVIGENCIA" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ObtenerPrestadoresEntity">
+    <Property Type="Decimal" Name="RUT" Nullable="false" />
+    <Property Type="String" Name="NOMBRE" Nullable="true" />
+    <Property Type="String" Name="ISAPRE" Nullable="false" />
+    <Property Type="Decimal" Name="SECUENCIA" Nullable="false" />
+    <Property Type="Decimal" Name="RUTINSTITUCION" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="ObtenerRestriccionesEntity">
+    <Property Type="Decimal" Name="IDPRESTACION" Nullable="false" />
+    <Property Type="String" Name="CODPLAN" Nullable="false" />
+    <Property Type="String" Name="ISAPRE" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ObtenerSolicitudesEntity">
+    <Property Type="Decimal" Name="IDSOLICITUD" Nullable="false" />
+    <Property Type="String" Name="PRESTACION" Nullable="false" />
+    <Property Type="String" Name="PRESTADOR" Nullable="true" />
+    <Property Type="String" Name="ISAPRE" Nullable="false" />
+    <Property Type="String" Name="NOMBREAFILIADO" Nullable="true" />
+    <Property Type="String" Name="ESTADO" Nullable="false" />
+  </ComplexType>
+</Schema>
